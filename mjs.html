@@ -9,10 +9,23 @@
 <style>
 body { margin:0; padding:0; }
 #map { position:absolute; top:0; bottom:0; width:100%; }
+.legend {
+    background-color: #fff;
+    border-radius: 3px;
+    bottom: 30px;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.10);
+    padding: 10px;
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+}
 </style>
 </head>
 <body>
 <div id='map'></div>
+<div id='state-legend' class='legend' style='display: block'>
+  <img src="http://sedac.ciesin.columbia.edu/geoserver/wms?request=GetLegendGraphic&format=image%2Fpng&layer=gpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015&width=15&height=15&legend_options=border:false;mx:0.05;my:0.02;dx:0.2;dy:0.07;fontSize:11;bandInfo:false;"></img>
+</div>
 <script>
 mapboxgl.accessToken = 'pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv1cmw';
 var map = new mapboxgl.Map({
@@ -30,11 +43,12 @@ map.on('load', function() {
             'tiles': [
               //'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
 
-            'https://sedac.ciesin.columbia.edu/geoserver/wms?&service=WMS&request=GetMap&layers=gpw-v4%3Agpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015&styles=&format=image%2Fjpeg&transparent=false&version=1.1.1&height=256&width=256&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
+            'https://sedac.ciesin.columbia.edu/geoserver/wms?&service=WMS&request=GetMap&layers=gpw-v4%3Agpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015&styles=&format=image%2Fpng&transparent=true&version=1.1.1&height=512&width=512&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
             ],
-            'tileSize': 256
+            'tileSize': 512
         },
-        'paint': {}
+        'paint': {},
+        'attribution': 'abc'
     }, 'aeroway-taxiway');
 });
 </script>
