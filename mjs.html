@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
 <head>
 <meta charset='utf-8' />
@@ -23,7 +23,7 @@ var map = new mapboxgl.Map({
 });
 map.on('load', function() {
     map.addLayer({
-        'id': 'wms-test-layer',
+        'id': 'wms',
         'type': 'raster',
         'source': {
             'type': 'raster',
@@ -33,7 +33,7 @@ map.on('load', function() {
             'tileSize': 256
         },
         'paint': {}
-    }, 'ciesin');
+    }, 'wms');
 });
 </script>
 </body>
