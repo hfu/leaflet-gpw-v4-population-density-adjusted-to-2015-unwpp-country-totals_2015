@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8' />
+<title>leaflet-gpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015</title>
+<meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+<script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.js'></script>
+<link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.41.0/mapbox-gl.css' rel='stylesheet' />
+<style>
+body { margin:0; padding:0; }
+#map { position:absolute; top:0; bottom:0; width:100%; }
+</style>
+</head>
+<body>
+<div id='map'></div>
+<script>
+mapboxgl.accessToken = 'pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv1cmw';
+var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/light-v9',
+    zoom: 8,
+    center: [-74.5447, 40.6892]
+});
+map.on('load', function() {
+    map.addLayer({
+        'id': 'wms-test-layer',
+        'type': 'raster',
+        'source': {
+            'type': 'raster',
+            'tiles': [
+            'https://sedac.ciesin.columbia.edu/geoserver/wms?&service=WMS&request=GetMap&layers=gpw-v4%3Agpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015&styles=&format=image%2Fjpeg&transparent=false&version=1.1.1&height=256&width=256&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
+            ],
+            'tileSize': 256
+        },
+        'paint': {}
+    }, 'ciesin');
+});
+</script>
+</body>
+</html>
