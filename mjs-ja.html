@@ -27,12 +27,11 @@ body { margin:0; padding:0; }
   <img src="http://sedac.ciesin.columbia.edu/geoserver/wms?request=GetLegendGraphic&format=image%2Fpng&layer=gpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015&width=15&height=15&legend_options=border:false;mx:0.05;my:0.02;dx:0.2;dy:0.07;fontSize:11;bandInfo:false;"></img>
 </div>
 <script>
-mapboxgl.accessToken = 'pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv1cmw';
 var map = new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/mapbox/light-v9',
+    style: 'https://hfu.github.io/klokantech-basic-ja/style.json',
     zoom: 6, hash: true,
-    center: [29.665, 7.973]
+    center: [-75.592, 39.63]
 });
 map.on('load', function() {
     map.addLayer({
@@ -41,14 +40,12 @@ map.on('load', function() {
         'source': {
             'type': 'raster',
             'tiles': [
-              //'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
-
             'https://sedac.ciesin.columbia.edu/geoserver/wms?&service=WMS&request=GetMap&layers=gpw-v4%3Agpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015&styles=&format=image%2Fpng&transparent=true&version=1.1.1&height=512&width=512&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
             ],
             'tileSize': 512
         },
-        'paint': {}
-    }, 'aeroway-taxiway');
+        'paint': {},
+    }, 'park_outline');
 });
 </script>
 </body>
