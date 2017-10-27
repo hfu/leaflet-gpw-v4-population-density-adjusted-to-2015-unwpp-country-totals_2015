@@ -15,7 +15,7 @@ html, body { height: 100%; margin: 0; }
 <div id='map'></div>
 <script type="text/javascript">
 var map = L.map('map', {center: [-17, -67], zoom: 3});
-var wmsLayer = L.tileLayer.wms('http://sedac.ciesin.columbia.edu/geoserver/wms?', {
+var wmsLayer = L.tileLayer.wms('https://sedac.ciesin.columbia.edu/geoserver/wms?', {
   layers: 'gpw-v4:gpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015'
 }).addTo(map);
 </script>
