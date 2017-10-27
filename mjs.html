@@ -18,8 +18,8 @@ mapboxgl.accessToken = 'pk.eyJ1IjoiaGZ1IiwiYSI6ImlRSGJVUTAifQ.rTx380smyvPc1gUfZv
 var map = new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/light-v9',
-    zoom: 8,
-    center: [-74.5447, 40.6892]
+    zoom: 6, hash: true,
+    center: [29.665, 7.973]
 });
 map.on('load', function() {
     map.addLayer({
@@ -28,12 +28,14 @@ map.on('load', function() {
         'source': {
             'type': 'raster',
             'tiles': [
+              //'https://geodata.state.nj.us/imagerywms/Natural2015?bbox={bbox-epsg-3857}&format=image/png&service=WMS&version=1.1.1&request=GetMap&srs=EPSG:3857&width=256&height=256&layers=Natural2015'
+
             'https://sedac.ciesin.columbia.edu/geoserver/wms?&service=WMS&request=GetMap&layers=gpw-v4%3Agpw-v4-population-density-adjusted-to-2015-unwpp-country-totals_2015&styles=&format=image%2Fjpeg&transparent=false&version=1.1.1&height=256&width=256&srs=EPSG%3A3857&bbox={bbox-epsg-3857}'
             ],
             'tileSize': 256
         },
         'paint': {}
-    }, 'wms');
+    }, 'aeroway-taxiway');
 });
 </script>
 </body>
